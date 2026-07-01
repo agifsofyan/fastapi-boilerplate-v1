@@ -1,0 +1,20 @@
+from abc import ABC, abstractmethod
+from app.domain.entities.profile_entity import Profile
+
+class ProfileRepository(ABC):
+
+    @abstractmethod
+    def create(self, profile: Profile, interest_ids: list[int] | None = None) -> Profile:
+        pass
+
+    @abstractmethod
+    def get_by_user_id(self, user_id: int) -> Profile | None:
+        pass
+
+    @abstractmethod
+    def update(self, profile: Profile, interest_ids: list[int] | None = None) -> Profile:
+        pass
+    
+    @abstractmethod
+    def delete(self, user_id: int) -> None:
+        pass
