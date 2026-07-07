@@ -1,7 +1,5 @@
 from fastapi import status
-
 from app.core.exceptions.base_exception import AppException
-
 
 class AddressAlreadyExistsException(AppException):
 

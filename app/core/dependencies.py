@@ -4,6 +4,8 @@ from jose import ExpiredSignatureError, JWTError
 from sqlalchemy.orm import Session
 from app.application.services.me_service import UserService
 from app.application.services.profile.address_service import AddressService
+from app.application.services.region.region_service import RegionService
+from app.infrastructure.clients.region.region_service import RegionApiClient
 from app.infrastructure.database.session import get_db
 from app.infrastructure.repositories.address_repository_impl import AddressRepositoryImpl
 from app.infrastructure.repositories.user_repository_impl import UserRepositoryImpl
@@ -112,3 +114,7 @@ def get_me_service(
         profile_repository=profile_repository,
         address_repository=address_repository,
     )
+    
+def get_region_service():
+    client = RegionApiClient()
+    return RegionService(client)

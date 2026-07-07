@@ -1,12 +1,14 @@
 from pydantic import BaseModel, ConfigDict, Field
 
 class AddressBase(BaseModel):
-    province_id: int      # Provinsi
+    province_code: str    # Provinsi
     province_name: str    # Provinsi
-    regency_id: int       # Kota/Kabupaten
+    regency_code: str     # Kota/Kabupaten
     regency_name: str     # Kota/Kabupaten
-    subdistrict_id: int   # Kecamatan
+    subdistrict_code: str # Kecamatan
     subdistrict_name: str # Kecamatan
+    village_code: str     # Kelurahan
+    village_name: str     # Kelurahan
     full_address: str     # Full Address
     postal_code: str = Field(
         min_length=5,
@@ -20,14 +22,16 @@ class AddressCreate(AddressBase):
 
 
 class AddressUpdate(BaseModel):
-    province_id: int | None      # Provinsi
-    province_name: str | None    # Provinsi
-    regency_id: int | None       # Kota/Kabupaten
-    regency_name: str | None     # Kota/Kabupaten
-    subdistrict_id: int | None   # Kecamatan
-    subdistrict_name: str | None # Kecamatan
-    full_address: str | None     # Full Address
-    postal_code: str | None      # Kode POS
+    province_code: str | None
+    province_name: str | None
+    regency_code: str | None
+    regency_name: str | None
+    subdistrict_code: str | None
+    subdistrict_name: str | None
+    village_code: str | None
+    village_name: str | None
+    full_address: str | None
+    postal_code: str | None
 
 
 class AddressResponse(AddressBase):

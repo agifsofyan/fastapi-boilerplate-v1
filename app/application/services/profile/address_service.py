@@ -20,12 +20,14 @@ class AddressService:
         address = AddressEntity(
             id=None,
             user_id=user_id,
-            province_id=request.province_id,
+            province_code=request.province_code,
             province_name=request.province_name,
-            regency_id=request.regency_id,
+            regency_code=request.regency_code,
             regency_name=request.regency_name,
-            subdistrict_id=request.subdistrict_id,
+            subdistrict_code=request.subdistrict_code,
             subdistrict_name=request.subdistrict_name,
+            village_code=request.village_code,
+            village_name=request.village_name,
             full_address=request.full_address,
             postal_code=request.postal_code,  
         )
@@ -58,23 +60,29 @@ class AddressService:
         if address is None:
             raise AddressNotFoundException()
 
-        if request.province_id is not None:
-            address.province_id = request.province_id
+        if request.province_code is not None:
+            address.province_code = request.province_code
             
         if request.province_name is not None:
             address.province_name = request.province_name
 
-        if request.regency_id is not None:
-            address.regency_id = request.regency_id
+        if request.regency_code is not None:
+            address.regency_code = request.regency_code
             
         if request.regency_name is not None:
             address.regency_name = request.regency_name
 
-        if request.subdistrict_id is not None:
-            address.subdistrict_id = request.subdistrict_id
+        if request.subdistrict_code is not None:
+            address.subdistrict_code = request.subdistrict_code
             
         if request.subdistrict_name is not None:
             address.subdistrict_name = request.subdistrict_name
+            
+        if request.village_code is not None:
+            address.village_code = request.village_code
+            
+        if request.village_name is not None:
+            address.village_name = request.village_name
 
         if request.full_address is not None:
             address.full_address = request.full_address

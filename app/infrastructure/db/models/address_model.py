@@ -8,12 +8,14 @@ class AddressModel(Base, TimestampMixin):
     
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), unique=True, nullable=False, index=True)
-    province_id: Mapped[int] = mapped_column(nullable=False)
+    province_code: Mapped[str] = mapped_column(nullable=False)
     province_name: Mapped[str] = mapped_column(nullable=False)
-    regency_id: Mapped[int] = mapped_column(nullable=False)
+    regency_code: Mapped[str] = mapped_column(nullable=False)
     regency_name: Mapped[str] = mapped_column(nullable=False)
-    subdistrict_id: Mapped[int] = mapped_column(nullable=False)
+    subdistrict_code: Mapped[str] = mapped_column(nullable=False)
     subdistrict_name: Mapped[str] = mapped_column(nullable=False)
+    village_code: Mapped[str] = mapped_column(nullable=False)
+    village_name: Mapped[str] = mapped_column(nullable=False)
     full_address: Mapped[str] = mapped_column(Text(255), nullable=False)
     postal_code: Mapped[str] = mapped_column(String(5), nullable=True)
 

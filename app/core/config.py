@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_DAY: int = 1
+    REGION_API_BASE_URL: str
     
     model_config = SettingsConfigDict(
         env_file=".env",

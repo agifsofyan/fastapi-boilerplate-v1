@@ -10,12 +10,14 @@ class AddressRepositoryImpl(AddressRepository):
     def create(self, address: AddressEntity) -> AddressEntity:
         db_address = AddressModel(
             user_id=address.user_id,
-            province_id=address.province_id,
+            province_code=address.province_code,
             province_name=address.province_name,
-            regency_id=address.regency_id,
+            regency_code=address.regency_code,
             regency_name=address.regency_name,
-            subdistrict_id=address.subdistrict_id,
+            subdistrict_code=address.subdistrict_code,
             subdistrict_name=address.subdistrict_name,
+            village_code=address.village_code,
+            village_name=address.subdistrict_name,
             full_address=address.full_address,
             postal_code=address.postal_code,
         )
@@ -26,12 +28,14 @@ class AddressRepositoryImpl(AddressRepository):
         return AddressEntity(
             id=db_address.id, 
             user_id=db_address.user_id,
-            province_id=db_address.province_id,
+            province_code=db_address.province_code,
             province_name=db_address.province_name,
-            regency_id=db_address.regency_id,
+            regency_code=db_address.regency_code,
             regency_name=db_address.regency_name,
-            subdistrict_id=db_address.subdistrict_id,
+            subdistrict_code=db_address.subdistrict_code,
             subdistrict_name=db_address.subdistrict_name,
+            village_code=db_address.village_code,
+            village_name=db_address.subdistrict_name,
             full_address=db_address.full_address,
             postal_code=db_address.postal_code,       
         )
@@ -47,12 +51,14 @@ class AddressRepositoryImpl(AddressRepository):
             AddressEntity(
                 id=address.id,
                 user_id=address.user_id,
-                province_id=address.province_id,
+                province_code=address.province_code,
                 province_name=address.province_name,
-                regency_id=address.regency_id,
+                regency_code=address.regency_code,
                 regency_name=address.regency_name,
-                subdistrict_id=address.subdistrict_id,
+                subdistrict_code=address.subdistrict_code,
                 subdistrict_name=address.subdistrict_name,
+                village_code=address.village_code,
+                village_name=address.subdistrict_name,
                 full_address=address.full_address,
                 postal_code=address.postal_code,   
             )
@@ -72,12 +78,14 @@ class AddressRepositoryImpl(AddressRepository):
         return AddressEntity(
             id=address_model.id, 
             user_id=address_model.user_id,
-            province_id=address_model.province_id,
+            province_code=address_model.province_code,
             province_name=address_model.province_name,
-            regency_id=address_model.regency_id,
+            regency_code=address_model.regency_code,
             regency_name=address_model.regency_name,
-            subdistrict_id=address_model.subdistrict_id,
+            subdistrict_code=address_model.subdistrict_code,
             subdistrict_name=address_model.subdistrict_name,
+            village_code=address_model.village_code,
+            village_name=address_model.subdistrict_name,
             full_address=address_model.full_address,
             postal_code=address_model.postal_code,   
         )
@@ -92,9 +100,9 @@ class AddressRepositoryImpl(AddressRepository):
         if address_model is None:
             raise ValueError("AddressEntity not found")
 
-        address_model.province_id = address.province_id
-        address_model.regency_id = address.regency_id
-        address_model.subdistrict_id = address.subdistrict_id
+        address_model.province_code = address.province_code
+        address_model.regency_code = address.regency_code
+        address_model.subdistrict_code = address.subdistrict_code
         address_model.full_address = address.full_address
         address_model.postal_code = address.postal_code
 
@@ -104,12 +112,14 @@ class AddressRepositoryImpl(AddressRepository):
         return AddressEntity(
             id=address_model.id, 
             user_id=address_model.user_id,
-            province_id=address_model.province_id,
+            province_code=address_model.province_code,
             province_name=address_model.province_name,
-            regency_id=address_model.regency_id,
+            regency_code=address_model.regency_code,
             regency_name=address_model.regency_name,
-            subdistrict_id=address_model.subdistrict_id,
+            subdistrict_code=address_model.subdistrict_code,
             subdistrict_name=address_model.subdistrict_name,
+            village_code=address_model.village_code,
+            village_name=address_model.subdistrict_name,
             full_address=address_model.full_address,
             postal_code=address_model.postal_code,   
         )
