@@ -1,6 +1,8 @@
+from uuid import uuid4
+
 import pytest
 from app.application.services.auth.register_service import RegisterService
-from app.domain.entities.user_entity import User
+from app.domain.entities.user_entity import UserEntity
 from app.schemas.auth_schema import RegisterRequest
 
 
@@ -11,8 +13,8 @@ class TestRegisterService:
             def get_by_email(self, email: str):
                 return None
             
-            def save(self, user: User) -> User:
-                return User(id=1, name=user.name, email=user.email, password=user.password)
+            def save(self, user: UserEntity) -> UserEntity:
+                return UserEntity(id=uuid4(), name=user.name, email=user.email, password=user.password)
         
         class MockTokenService:
             def generate(self, user_id: str) -> str:
@@ -29,7 +31,7 @@ class TestRegisterService:
     def test_register_user_already_exists(self):
         class MockRepository:
             def get_by_email(self, email: str):
-                return User(id=1, name="Existing", email=email, password="hash")
+                return UserEntity(id=uuid4(), name="Existing", email=email, password="hash")
         
         class MockTokenService:
             def generate(self, user_id: str) -> str:
